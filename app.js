@@ -23,6 +23,8 @@ const poseVectorMap = {
 function drawProceduralPose(poseName) {
   const container = document.getElementById('cosmic-media-box');
   if (!container) return;
+  // ADD THIS LINE TO UNHIDE THE CONTAINER:
+  container.style.display = 'block';
 
   const data = poseVectorMap[poseName] || poseVectorMap["Padmasana"];
 
