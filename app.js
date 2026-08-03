@@ -1,3 +1,46 @@
+// --- PROCEDURAL SVG POSE GENERATOR ---
+const poseVectorMap = {
+  "Padmasana": {
+    head: { cx: 125, cy: 110 },
+    torso: "M 125 120 L 125 170",
+    arms: "M 125 135 L 90 160 L 75 180 M 125 135 L 160 160 L 175 180",
+    legs: "M 125 170 L 80 190 L 140 190 M 125 170 L 170 190 L 110 190"
+  },
+  "Bakasana": {
+    head: { cx: 85, cy: 155 },
+    torso: "M 95 150 L 140 120",
+    arms: "M 105 190 L 105 155 L 125 135",
+    legs: "M 140 120 L 115 130 L 155 145"
+  },
+  "Sirsasana": {
+    head: { cx: 125, cy: 180 },
+    torso: "M 125 180 L 125 110",
+    arms: "M 110 185 L 125 180 L 140 185",
+    legs: "M 125 110 L 125 40"
+  }
+};
+
+function drawProceduralPose(poseName) {
+  const container = document.getElementById('cosmic-media-box');
+  if (!container) return;
+
+  const data = poseVectorMap[poseName] || poseVectorMap["Padmasana"];
+
+  container.innerHTML = `
+    <svg viewBox="0 0 250 250" width="100%" height="220" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="125" cy="125" r="95" fill="#08080a" stroke="#d4af37" stroke-width="1" stroke-dasharray="4,4" />
+      <circle cx="125" cy="125" r="80" fill="none" stroke="#d4af37" stroke-width="0.5" opacity="0.3" />
+      <circle cx="${data.head.cx}" cy="${data.head.cy}" r="11" fill="none" stroke="#d4af37" stroke-width="2.5" />
+      <path d="${data.torso}" fill="none" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round" />
+      <path d="${data.arms}" fill="none" stroke="#d4af37" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+      <path d="${data.legs}" fill="none" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+      <circle cx="125" cy="140" r="3" fill="#e5a93c" />
+    </svg>
+  `;
+}
+
+
+
 // --- BASE POSTURE ARCHITECTURE SEEDS ---
 const baseAsanas = [
     "Padmasana", "Bhujangasana", "Garudasana", "Tadasana", "Adho Mukha Svanasana", 
@@ -130,6 +173,7 @@ function getTierLimits(tierValue) {
 function manifestRandomPose() {
     const currentTier = tierSelect.value;
     const limits = getTierLimits(currentTier);
+    
 
     // Baseline layout resets
     if (cosmicMediaBox) cosmicMediaBox.style.display = "none";
@@ -168,6 +212,8 @@ function manifestRandomPose() {
             displayPose(pool[randomIdx]);
         }
     }
+    // Render instant procedural SVG illustration
+    drawProceduralPose(poseTitle.innerText);
 }
 
 function handleCoordinateSearch() {
