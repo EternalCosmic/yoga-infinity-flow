@@ -49,7 +49,7 @@
       background: radial-gradient(ellipse at center, #180b33 0%, #05030a 100%);
     }
 
-    /* Outer Matrix Frame */
+    /* Outer Matrix Container Frame */
     .matrix-frame {
       width: 100%;
       max-width: 1100px;
@@ -57,138 +57,177 @@
       backdrop-filter: blur(20px);
       border: 1px solid rgba(168, 85, 247, 0.4);
       border-radius: 24px;
-      padding: 2.5rem 2rem;
+      padding: 3rem 2rem;
       box-shadow: 0 0 50px rgba(126, 34, 206, 0.25), inset 0 0 30px rgba(168, 85, 247, 0.1);
       position: relative;
     }
 
-    /* Header */
+    /* Header Styling */
     .header {
       text-align: center;
-      margin-bottom: 2rem;
+      margin-bottom: 2.5rem;
     }
 
     .header h1 {
       font-family: 'Cinzel', serif;
-      font-size: 2.6rem;
+      font-size: 2.8rem;
       font-weight: 900;
       letter-spacing: 4px;
       background: linear-gradient(90deg, #d8b4fe, #818cf8, #38bdf8);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       text-shadow: 0 0 30px rgba(168, 85, 247, 0.6);
-      margin-bottom: 0.4rem;
+      margin-bottom: 0.5rem;
     }
 
     .header p {
-      font-size: 0.85rem;
+      font-size: 0.9rem;
       letter-spacing: 3px;
       color: var(--accent-blue);
       text-transform: uppercase;
       font-weight: 600;
     }
 
-    /* Layout Grid */
-    .matrix-layout {
+    /* Top Stats Row */
+    .stats-grid {
       display: grid;
-      grid-template-columns: 1fr 220px 1fr;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
       gap: 1.5rem;
-      align-items: center;
       margin-bottom: 2rem;
     }
 
-    @media (max-width: 850px) {
-      .matrix-layout {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    .stats-col, .actions-col {
-      display: flex;
-      flex-direction: column;
-      gap: 1.2rem;
-    }
-
-    .card-item {
+    .stat-card {
       background: var(--card-bg);
       border: 1px solid var(--border-glow);
-      border-radius: 18px;
-      padding: 1.2rem;
+      border-radius: 20px;
+      padding: 1.5rem 1rem;
       text-align: center;
+      position: relative;
       transition: all 0.4s ease;
       backdrop-filter: blur(12px);
     }
 
-    .card-item:hover {
-      transform: translateY(-4px);
+    .stat-card:hover {
+      transform: translateY(-5px);
       border-color: var(--accent-purple);
-      box-shadow: 0 0 25px rgba(168, 85, 247, 0.4);
+      box-shadow: 0 0 30px rgba(168, 85, 247, 0.4);
     }
 
-    .orb {
-      width: 65px;
-      height: 65px;
-      margin: 0 auto 0.6rem;
+    .orb-glow {
+      width: 70px;
+      height: 70px;
+      margin: 0 auto 0.8rem;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.5rem;
+      font-size: 1.6rem;
       font-weight: 800;
       color: #fff;
+      position: relative;
     }
 
     .orb-purple {
-      background: radial-gradient(circle, rgba(168, 85, 247, 0.9) 0%, rgba(88, 28, 135, 0.4) 100%);
+      background: radial-gradient(circle, rgba(168, 85, 247, 0.8) 0%, rgba(88, 28, 135, 0.4) 100%);
       box-shadow: 0 0 20px rgba(168, 85, 247, 0.8);
     }
 
     .orb-blue {
-      background: radial-gradient(circle, rgba(56, 189, 248, 0.9) 0%, rgba(30, 58, 138, 0.4) 100%);
+      background: radial-gradient(circle, rgba(56, 189, 248, 0.8) 0%, rgba(30, 58, 138, 0.4) 100%);
       box-shadow: 0 0 20px rgba(56, 189, 248, 0.8);
     }
 
-    .gold-sun {
-      background: radial-gradient(circle, #f59e0b 0%, #b45309 70%, transparent 100%);
-      box-shadow: 0 0 20px rgba(245, 158, 11, 0.7);
-    }
-
-    .purple-vortex {
-      background: radial-gradient(circle, #c084fc 0%, #581c87 70%, transparent 100%);
-      box-shadow: 0 0 20px rgba(192, 132, 252, 0.7);
-    }
-
-    .label {
-      font-size: 0.75rem;
-      letter-spacing: 1.5px;
+    .stat-label {
+      font-size: 0.8rem;
+      letter-spacing: 2px;
       color: #d8b4fe;
       text-transform: uppercase;
-      font-weight: 700;
+      font-weight: 600;
     }
 
-    /* Central Figure */
-    .center-figure {
+    /* Central Cosmic Figure Display */
+    .cosmic-center-container {
       display: flex;
       justify-content: center;
       align-items: center;
+      margin: 2rem 0;
+      position: relative;
     }
 
-    .meditating-svg {
-      width: 190px;
-      height: 230px;
-      filter: drop-shadow(0 0 25px rgba(56, 189, 248, 0.85));
+    .meditating-figure-svg {
+      width: 180px;
+      height: 220px;
+      filter: drop-shadow(0 0 25px rgba(56, 189, 248, 0.8));
       animation: pulseGlow 4s infinite alternate ease-in-out;
     }
 
     @keyframes pulseGlow {
       0% {
         filter: drop-shadow(0 0 15px rgba(168, 85, 247, 0.6));
-        transform: scale(0.97);
+        transform: scale(0.98);
       }
       100% {
-        filter: drop-shadow(0 0 35px rgba(56, 189, 248, 0.95));
-        transform: scale(1.03);
+        filter: drop-shadow(0 0 35px rgba(56, 189, 248, 0.9));
+        transform: scale(1.02);
       }
+    }
+
+    /* Action Buttons Row */
+    .actions-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .action-orb-btn {
+      background: var(--card-bg);
+      border: 1px solid var(--border-glow);
+      border-radius: 20px;
+      padding: 1.25rem 1rem;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.4s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .action-orb-btn:hover {
+      transform: scale(1.03);
+      border-color: var(--accent-blue);
+      box-shadow: 0 0 30px rgba(56, 189, 248, 0.3);
+    }
+
+    .action-orb {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      margin-bottom: 0.8rem;
+      transition: transform 0.4s ease;
+    }
+
+    .gold-sun {
+      background: radial-gradient(circle, #f59e0b 0%, #b45309 70%, transparent 100%);
+      box-shadow: 0 0 25px rgba(245, 158, 11, 0.7);
+    }
+
+    .blue-matrix {
+      background: radial-gradient(circle, #38bdf8 0%, #1e40af 70%, transparent 100%);
+      box-shadow: 0 0 25px rgba(56, 189, 248, 0.7);
+    }
+
+    .purple-vortex {
+      background: radial-gradient(circle, #c084fc 0%, #581c87 70%, transparent 100%);
+      box-shadow: 0 0 25px rgba(192, 132, 252, 0.7);
+    }
+
+    .action-title {
+      font-size: 0.8rem;
+      letter-spacing: 1.5px;
+      font-weight: 700;
+      color: #f3f0ff;
+      text-transform: uppercase;
     }
 
     /* Pose Display Panel */
@@ -196,8 +235,9 @@
       background: rgba(15, 10, 30, 0.85);
       border: 1px solid rgba(168, 85, 247, 0.35);
       border-radius: 16px;
-      padding: 1.8rem;
+      padding: 2rem;
       text-align: center;
+      position: relative;
     }
 
     .pose-tier {
@@ -205,22 +245,27 @@
       letter-spacing: 2px;
       color: var(--accent-gold);
       text-transform: uppercase;
-      margin-bottom: 0.4rem;
+      margin-bottom: 0.5rem;
     }
 
     .pose-title {
       font-family: 'Cinzel', serif;
-      font-size: 1.7rem;
+      font-size: 1.8rem;
       color: #ffffff;
-      margin-bottom: 0.6rem;
+      margin-bottom: 0.8rem;
     }
 
     .pose-desc {
       color: #c4b5fd;
-      font-size: 0.9rem;
+      font-size: 0.95rem;
       max-width: 650px;
       margin: 0 auto;
-      line-height: 1.5;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 768px) {
+      .header h1 { font-size: 2rem; }
+      .matrix-frame { padding: 2rem 1rem; }
     }
   </style>
 </head>
@@ -234,44 +279,159 @@
       <p>Infinite Cosmic Expansion Matrix</p>
     </header>
 
-    <div class="matrix-layout">
-      <!-- Left Column Stats -->
-      <div class="stats-col">
-        <div class="card-item">
-          <div class="orb orb-purple">84</div>
-          <div class="label">Foundational</div>
-        </div>
-        <div class="card-item">
-          <div class="orb orb-blue">908</div>
-          <div class="label">Master Chart</div>
-        </div>
-        <div class="card-item">
-          <div class="orb orb-purple">8,000</div>
-          <div class="label">Variations Matrix</div>
-        </div>
+    <!-- Top Stats Row -->
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="orb-glow orb-purple">84</div>
+        <div class="stat-label">Foundational</div>
       </div>
-
-      <!-- Center Meditating Figure -->
-      <div class="center-figure">
-        <svg class="meditating-svg" viewBox="0 0 100 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <radialGradient id="cosmicGalaxy" cx="50%" cy="50%" r="50%">
-              <stop offset="0%" stop-color="#ffffff"/>
-              <stop offset="35%" stop-color="#38bdf8"/>
-              <stop offset="75%" stop-color="#818cf8"/>
-              <stop offset="100%" stop-color="#a855f7"/>
-            </radialGradient>
-          </defs>
-          <circle cx="50" cy="25" r="10" fill="url(#cosmicGalaxy)" />
-          <circle cx="50" cy="11" r="4" fill="#38bdf8" />
-          <path d="M50 36 C 35 45, 25 55, 18 68 C 15 74, 25 76, 32 70 C 40 63, 45 50, 50 50 C 55 50, 60 63, 68 70 C 75 76, 85 74, 82 68 C 75 55, 65 45, 50 36 Z" fill="url(#cosmicGalaxy)" />
-          <path d="M50 65 C 32 65, 12 85, 20 98 C 28 108, 45 102, 50 96 C 55 102, 72 108, 80 98 C 88 85, 68 65, 50 65 Z" fill="url(#cosmicGalaxy)" />
-        </svg>
+      <div class="stat-card">
+        <div class="orb-glow orb-blue">908</div>
+        <div class="stat-label">Master Chart</div>
       </div>
+      <div class="stat-card">
+        <div class="orb-glow orb-purple">8,000</div>
+        <div class="stat-label">Variations Matrix</div>
+      </div>
+    </div>
 
-      <!-- Right Column Actions -->
-      <div class="actions-col">
-        <div class="card-item"
+    <!-- Centered Cosmic Meditating Figure -->
+    <div class="cosmic-center-container">
+      <svg class="meditating-figure-svg" viewBox="0 0 100 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <radialGradient id="starBody" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#ffffff"/>
+            <stop offset="40%" stop-color="#38bdf8"/>
+            <stop offset="80%" stop-color="#818cf8"/>
+            <stop offset="100%" stop-color="#a855f7"/>
+          </radialGradient>
+        </defs>
+        <!-- Head -->
+        <circle cx="50" cy="25" r="10" fill="url(#starBody)" />
+        <!-- Hair bun / Crown node -->
+        <circle cx="50" cy="11" r="4" fill="#38bdf8" />
+        <!-- Torso & Arms -->
+        <path d="M50 36 C 35 45, 25 55, 18 68 C 15 74, 25 76, 32 70 C 40 63, 45 50, 50 50 C 55 50, 60 63, 68 70 C 75 76, 85 74, 82 68 C 75 55, 65 45, 50 36 Z" fill="url(#starBody)" />
+        <!-- Legs in Lotus Pose -->
+        <path d="M50 65 C 32 65, 12 85, 20 98 C 28 108, 45 102, 50 96 C 55 102, 72 108, 80 98 C 88 85, 68 65, 50 65 Z" fill="url(#starBody)" />
+      </svg>
+    </div>
+
+    <!-- Action Orb Buttons Row -->
+    <div class="actions-grid">
+      <div class="action-orb-btn" onclick="manifestPose()">
+        <div class="action-orb gold-sun"></div>
+        <div class="action-title">Manifest Pose</div>
+      </div>
+      <div class="action-orb-btn" onclick="ascendMatrix()">
+        <div class="action-orb blue-matrix"></div>
+        <div class="action-title">Ascend Into Star Matrix</div>
+      </div>
+      <div class="action-orb-btn" onclick="dissolveIdentity()">
+        <div class="action-orb purple-vortex"></div>
+        <div class="action-title">Dissolve Identity Into Absolute Ocean</div>
+      </div>
+    </div>
+
+    <!-- Interactive Pose Display Panel -->
+    <div class="pose-display">
+      <div class="pose-tier" id="poseTier">Tier 1: Foundational Asana</div>
+      <h2 class="pose-title" id="poseTitle">Padmasana (Lotus Seat)</h2>
+      <p class="pose-desc" id="poseDesc">
+        The ultimate cross-legged baseline architecture anchoring structural symmetry for deep cosmic internal meditative focus.
+      </p>
+    </div>
+  </div>
+
+  <script>
+    /* Dynamic Background Canvas */
+    const canvas = document.getElementById('starfield');
+    const ctx = canvas.getContext('2d');
+    let stars = [];
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      initStars();
+    }
+
+    class Star {
+      constructor() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.size = Math.random() * 2 + 0.5;
+        this.baseAlpha = Math.random() * 0.7 + 0.3;
+        this.alpha = this.baseAlpha;
+        this.speedX = (Math.random() - 0.5) * 0.2;
+        this.speedY = (Math.random() - 0.5) * 0.2;
+        this.color = ['#d8b4fe', '#818cf8', '#38bdf8', '#ffffff'][Math.floor(Math.random() * 4)];
+      }
+
+      update() {
+        this.x += this.speedX;
+        this.y += this.speedY;
+
+        if (this.x < 0) this.x = canvas.width;
+        if (this.x > canvas.width) this.x = 0;
+        if (this.y < 0) this.y = canvas.height;
+        if (this.y > canvas.height) this.y = 0;
+
+        this.alpha = this.baseAlpha + Math.sin(Date.now() * 0.003 + this.x) * 0.2;
+      }
+
+      draw() {
+        ctx.save();
+        ctx.globalAlpha = Math.max(0, this.alpha);
+        ctx.fillStyle = this.color;
+        ctx.shadowBlur = this.size * 4;
+        ctx.shadowColor = this.color;
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.restore();
+      }
+    }
+
+    function initStars() {
+      stars = [];
+      for (let i = 0; i < 180; i++) {
+        stars.push(new Star());
+      }
+    }
+
+    function animateStarfield() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      stars.forEach((star) => {
+        star.update();
+        star.draw();
+      });
+      requestAnimationFrame(animateStarfield);
+    }
+
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+    animateStarfield();
+
+    /* Action Handlers */
+    function manifestPose() {
+      document.getElementById('poseTitle').innerText = "Tadasana (Mountain Pose)";
+      document.getElementById('poseDesc').innerText = "Standing firm in absolute alignment with the gravitational pull of the cosmic central axis.";
+    }
+
+    function ascendMatrix() {
+      document.getElementById('poseTier').innerText = "Matrix Expansion Layer";
+      document.getElementById('poseTitle').innerText = "Natarajasana (Cosmic Dancer)";
+      document.getElementById('poseDesc').innerText = "Embodying the infinite dance of creation, preservation, and dissolution across space-time.";
+    }
+
+    function dissolveIdentity() {
+      document.getElementById('poseTier').innerText = "Absolute Consciousness Layer";
+      document.getElementById('poseTitle').innerText = "Savasana (Corpse Pose / Universal Rest)";
+      document.getElementById('poseDesc').innerText = "Complete dissolution of the individual ego into the infinite ocean of unmanifested presence.";
+    }
+  </script>
+</body>
+</html>
   </script>
 </body>
 </html>
